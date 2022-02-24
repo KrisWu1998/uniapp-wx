@@ -1,0 +1,1 @@
+<block wx:if="{{!isLogin}}"><view data-event-opts="{{[['tap',[['handleLogin',['$event']]]]]}}" class="content" bindtap="__e">点击登录</view></block><block wx:else><view>已登录;<image src="userData.avator" class="_img"></image>{{'名称：'+(userData.name||'未授权')+''}}</view></block>
