@@ -2,7 +2,6 @@ import { BASE_API_URL } from '../api/common/index.js';
 
 const request = ((params)=>{
 	const {url, method, data, success, error} = params;
-	console.log(data)
 	uni.request({
 		url,
 		method,
@@ -34,8 +33,8 @@ const wxLogin = (cb) => {
 							const {code, data} = res;
 							if (code == 200) {
 								const {session_key} = data;
-								uni.setStorage('sessionKey', session_key);
-								uni.setStorage('loginfo', data);
+								uni.setStorageSync('sessionKey', session_key);
+								uni.setStorageSync('loginfo', data);
 							}
 							cb && cb()
 						},

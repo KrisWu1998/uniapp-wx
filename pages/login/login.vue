@@ -2,9 +2,6 @@
 	<view>
 		<view>欢迎来到授权页</view>
 		<button open-type="getPhoneNumber" @getphonenumber="getphonenumber">点击授权</button>
-		<button class="user-info-btn" open-type="getUserInfo" @getuserinfo="mpGetUserInfo" withCredentials="true">
-			用户头像授权
-			</button>
 	</view>
 </template>
 
@@ -20,27 +17,32 @@ export default {
 	methods: {
 		getphonenumber (e) {
 			wxLogin(()=>{
-				const {encryptedData, iv} = e.detail;
-				console.log(e)
+				const {encryptedData, iv, cloudID, code} = e.detail;
+				console.log('phonenumber----', e)
 				const params = {
 					encryptedData,
-					iv
+					iv,
 				}
 				saveUserPhone(params).then(res=>{
-
+					if (res.code == 200) {
+						uni.setStorageSync('sessionKey', res.value.sessionKey);
+						uni.setStorageSync('loginInfo', res.value);
+						uni.showToast({
+							title: res.message
+						})
+						let pages = getCurrentPages(); // 当前页面
+						let beforePage = pages[pages.length - 2]; // 上一页
+						uni.navigateBack({
+						  success: function() {
+						    beforePage.onLoad(); // 执行上一页的onLoad方法
+						  }
+						});
+					}
 				}).catch(err=>{
 					console.log('catch---', err)
 				})
 			})
 		},
-			
-		mpGetUserInfo () {
-			uni.getUserInfo({
-				success: res => {
-					console.log(res);
-				}
-			})
-		}
 	}
 }
 </script>

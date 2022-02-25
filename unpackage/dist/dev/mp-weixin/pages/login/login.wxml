@@ -1,1 +1,1 @@
-<view><view>欢迎来到授权页</view><button open-type="getPhoneNumber" data-event-opts="{{[['getphonenumber',[['getphonenumber',['$event']]]]]}}" bindgetphonenumber="__e">点击授权</button><button class="user-info-btn" open-type="getUserInfo" withCredentials="true" data-event-opts="{{[['getuserinfo',[['mpGetUserInfo',['$event']]]]]}}" bindgetuserinfo="__e">用户头像授权</button></view>
+<view><view>欢迎来到授权页</view><button open-type="getPhoneNumber" data-event-opts="{{[['getphonenumber',[['getphonenumber',['$event']]]]]}}" bindgetphonenumber="__e">点击授权</button></view>

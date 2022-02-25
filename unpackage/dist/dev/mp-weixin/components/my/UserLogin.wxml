@@ -1,0 +1,1 @@
+<view class="userLogin-box"><view data-event-opts="{{[['tap',[['mpGetUserInfo',['$event']]]]]}}" class="user-avatar" bindtap="__e"><image class="avatar-img _img" src="{{isLogin&&loginInfo.avatarUrl?loginInfo.avatarUrl:avatar}}"></image><view class="user-name">{{''+(isLogin&&loginInfo.nickName?loginInfo.nickName:'点击登录')+''}}</view></view></view>
